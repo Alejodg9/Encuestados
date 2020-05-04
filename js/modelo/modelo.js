@@ -12,6 +12,7 @@ var Modelo = function () {
   this.votoAgregado = new Evento(this)
 }
 
+
 Modelo.prototype = {
   //se obtiene el id más grande asignado a una pregunta
   obtenerUltimoId: function () {
