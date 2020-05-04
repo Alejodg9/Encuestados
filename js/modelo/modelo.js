@@ -10,6 +10,12 @@ var Modelo = function () {
   this.preguntaEliminada = new Evento(this)
   this.preguntasReseteadas = new Evento(this)
   this.votoAgregado = new Evento(this)
+  this.preguntaEditada = new Evento(this)
+
+  var preguntasGuardadas = JSON.parse(localStorage.getItem("preguntas"))
+  if (preguntasGuardadas) {
+    this.preguntas = preguntasGuardadas;
+  }
 }
 
 
@@ -35,9 +41,16 @@ Modelo.prototype = {
     this.preguntaAgregada.notificar()
   },
 
+  //se guardan las preguntas
+  guardar: function () {
+    var stringPreguntas = JSON.stringify(this.preguntas);
+    localStorage.setItem("preguntas", stringPreguntas)
+  },
+
   // se borra la pregunta correspondiente segun el id
   borrarPregunta: function (id) {
-    this.preguntas = this.preguntas.filter(pregunta => pregunta.id == !id)
+    var preguntasFiltradas = this.preguntas.filter(pregunta => pregunta.id == !id)
+    this.preguntas = preguntasFiltradas
     this.guardar()
     this.preguntaEliminada.notificar()
   },
@@ -64,9 +77,7 @@ Modelo.prototype = {
     preguntaEditada.textoPregunta = nombre;
     preguntaEditada.cantidadPorRespuesta = respuestas;
     this.guardar()
-    this.preguntasReseteadas.notificar()
+    this.preguntaEditada.notificar()
   },
 
-  //se guardan las preguntas
-  guardar: function () {}
 }
