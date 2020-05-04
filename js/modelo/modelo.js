@@ -49,8 +49,8 @@ Modelo.prototype = {
 
   // se borra la pregunta correspondiente segun el id
   borrarPregunta: function (id) {
-    var preguntasFiltradas = this.preguntas.filter(pregunta => pregunta.id == !id)
-    this.preguntas = preguntasFiltradas
+    
+    this.preguntas = this.preguntas.filter(pregunta => pregunta.id !== id)
     this.guardar()
     this.preguntaEliminada.notificar()
   },
