@@ -80,9 +80,9 @@ VistaAdministrador.prototype = {
       contexto.controlador.borrarPregunta(id)
     })
     
-    e.botonBorrarTodo.click(function (){
+    // e.botonBorrarTodo.click(function (){
 
-    })
+    // })
   },
 
   limpiarFormulario: function () {
