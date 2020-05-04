@@ -79,6 +79,10 @@ VistaAdministrador.prototype = {
       var id = parseInt($('.list-group-item.active').attr('id'))
       contexto.controlador.borrarPregunta(id)
     })
+    
+    e.botonBorrarTodo.click(function (){
+
+    })
   },
 
   limpiarFormulario: function () {
